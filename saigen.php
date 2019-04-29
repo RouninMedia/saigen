@@ -48,9 +48,16 @@ if ((isset($_GET['saigen'])) && ($_GET['saigen'] === 'true')) {
     for ($j = 0; $j < count($SubSubfolders); $j++) {
 
       if (in_array($SubSubfolders[$j], $Skip_Folders)) continue;
+      
+      /* OPTIONAL - DELETE EARLIER BACKUP */
+      /*
+      if (file_exists($_SERVER['DOCUMENT_ROOT'].'/.assets/content/pages/nail-products/'.$Subfolders[$i].'/'.$SubSubfolders[$j].'/BACKUP_page.json')) {
+        unlink($_SERVER['DOCUMENT_ROOT'].'/.assets/content/pages/nail-products/'.$Subfolders[$i].'/'.$SubSubfolders[$j].'/BACKUP_page.json');
+      }
+      */
 
       $File_To_Backup = $_SERVER['DOCUMENT_ROOT'].'/.assets/content/pages/nail-products/'.$Subfolders[$i].'/'.$SubSubfolders[$j].'/page.json';
-      $Backed_Up_File = $_SERVER['DOCUMENT_ROOT'].'/.assets/content/pages/nail-products/'.$Subfolders[$i].'/'.$SubSubfolders[$j].'/BACKUP_page.json';
+      $Backed_Up_File = $_SERVER['DOCUMENT_ROOT'].'/.assets/content/pages/nail-products/'.$Subfolders[$i].'/'.$SubSubfolders[$j].'/BACKUP2_page.json';
 
       copy($File_To_Backup, $Backed_Up_File);
 
